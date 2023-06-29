@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+{% block title %} Welcome to {% endblock %}
+
+{% block content %}
+
+    <div class="mt-1 bg-black-700 flex ">
+
+        <div class="bg-black text-center text-2xl w-1/6 rounded-xl">
+            <h2 class="ml-1 mr-1 mb-1 border-b  border-white text-white "> <strong> Cuisine </strong> </h2>
+            <div class="">
+                {% for item in items %}
+                    <div>
+                        <a href="#">
+                            <div class=" bg-black">
+                                <p class="text-semibold text-white" > {{ item.category }} </p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="ml-1 p-2 bg-black text-center text-2xl w-5/6 rounded-xl ">
+            <h2 class="border-b  border-white text-white mb-1 "><strong>
+                <div class="animated-word">
+                    <div class="letter">R</div>
+                    <div class="letter">E</div>
+                    <div class="letter">C</div>
+                    <div class="letter">I</div>
+                    <div class="letter">P</div>
+                    <div class="letter">E</div>
+                </div>
+            </strong></h2>
+            <div class="grid grid-cols-3 gap-4 mt-4">
+                {% for item in items %}
+                <div class='magnify'> 
+                    <div class="bg-orange-700 p-2 rounded-xl">
+                        <a href="{% url 'item:detail' item.id %}">
+                            <div class="mb-1">
+                                <img src="{{ item.image.url }}" class="rounded-t-xl" style="width:100%">
+                            </div>
+                            <div class="p-2 bg-orange-600 rounded-b-xl " style="width:100% hover:width:120%">
+                                <h4 class="text-semibold text-2xl"><strong>Name: {{ item.name }} </strong> </h4>
+                                <p class="text-semibold text-2xl"> Country: {{ item.category }} </p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
